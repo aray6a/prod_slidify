@@ -34,7 +34,7 @@
   <hgroup class="auto-fadein">
     <h1>International Address Check</h1>
     <h2></h2>
-    <p>Alim Ray<br/></p>
+    <p>Alim Ray<br/>DePaul University</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -58,17 +58,69 @@ being outside the US</li>
 
 <slide class="class" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Methodology</h2>
+    <h2>Training and Methodology Part I</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Bayesian filter created by using city, state, postal</li>
-<li>Previously cleaned addresses are used to create percentages in Bayesian filter formula</li>
+<li><p>Previously cleaned addresses are used to train Bayesian filter</p></li>
+<li><p>Three data sets created -- counts by city, counts by state, counts by postal</p></li>
+<li><p>Filter created by calculating likelihood of domestic city, likelihood of domestic state, likelihood of domestic postal
+using three data sets</p></li>
 </ul>
 
-<p>domestic = ( 0.8 * domestic_city * domestic_state * domestic_zipp * domestic_uszip * domestic_country ) 
---- .class #slide-2</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
+<slide class="class" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Counts by City Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Cities with domestic address rows &gt; 120 displayed</p></li>
+<li><p>Column name ORIGCITY = city names</p></li>
+<li><p>Column name D = domestic</p></li>
+<li><p>Column name F = foreign</p></li>
+</ul>
+
+<pre><code>##         ORIGCITY    D       F
+## 97        Aurora  128    0.01
+## 400      Chicago 4457    3.00
+## 555  Des Plaines  126    0.01
+## 804     Glenview  173    0.01
+## 1422  Naperville  258    1.00
+## 1573 Orland Park  129    0.01
+## 1620  Park Ridge  144    0.01
+## 1957      Skokie  173    0.01
+## 2137         UNK  745 9319.00
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Training and Methodology Part II</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Prior of .8 was chosen for domestic</p></li>
+<li><p>Missing values (i.e., a city was only domestic) were assigned 0.01</p></li>
+</ul>
+
+<h3>Final formula</h3>
+
+<p>likelihood of domestic = ( 0.8 * likelihood of domestic city * likelihood of domestic state * likelihood of domestic zip )</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-4" style="background:;">
+  <article data-timings="">
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -85,8 +137,26 @@ being outside the US</li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Methodology'>
+        data-slide=2 title='Training and Methodology Part I'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Counts by City Example'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Training and Methodology Part II'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
       </a>
     </li>
   </ul>
